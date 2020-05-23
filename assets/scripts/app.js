@@ -113,6 +113,37 @@ async function getSelectedRest(id){
   
 }
 
+async function getDefaultRest(){
+  let url = `https://developers.zomato.com/api/v2.1/restaurant?res_id=19010386`;
+  fetch(url, {
+    headers: { "user-key": "6c11b6f8975b808590064388ed3f37a8" }
+  })
+  .then(res => res.json())
+  .then(resData => {
+    
+    const{location:{address},photos} = resData;
+    // console.log(photosUrl);
+    
+    let txtElmnt = `<h1 class="desc-title" data-id="${resData.id}">${resData.name}</h2>
+    <p class="desc-address" data-id="${resData.id}">${address}</p>
+    <p class="desc-booking" data-id="${resData.id}">Paragraph booking</p>
+    <p class="desc-delivery" data-id="${resData.id}">Paragraph delivery</p>
+    <p class="desc-cuisinetitle" data-id="${resData.id}">Cuisines</p>
+    <h2 class="desc-cuisinedesc" data-id="${resData.id}">${resData.cuisines}</h2>
+    <p class="desc-phonetitle" data-id="${resData.id}">Phone</p>
+    <h2 class="desc-phonedesc" data-id="${resData.id}">${resData.phone_numbers}</h2>
+    <p class="desc-openingtitle" data-id="${resData.id}">Opening Hours</p>
+    <h2 class="desc-openingdesc" data-id="${resData.id}">${resData.openings}</h2>`;
+
+    let imgElmnt = `<img class="img-show" src="${resData.photos[0].photo.url}" />`;
+
+    descSection.innerHTML = txtElmnt;
+    imageSection.innerHTML =  imgElmnt;
+
+  }).catch((err)=>console.log(err));
+  
+}
+
 
 function showSelectedRest(event){
   
@@ -126,4 +157,5 @@ function showSelectedRest(event){
 window.addEventListener("load",showRests);
 window.addEventListener("load",getCuisines);
 window.addEventListener("load",getCategories);
+window.addEventListener("load",getDefaultRest);
 asideSec.addEventListener('click',showSelectedRest);
