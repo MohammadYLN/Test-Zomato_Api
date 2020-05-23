@@ -156,25 +156,25 @@
           height: 400px;
           // background-color: #eeecec;
   
-          #desc-title{    
+          .desc-title{    
             margin-top: 20px;    
             margin-bottom: 0px;
             font-family: 'Open Sans', sans-serif;
           }
-          #desc-address{
+          .desc-address{
             margin: 0px;
             font-size: .8em;
             color: #525252;
             font-family: 'Open Sans', sans-serif;
           }
-          #desc-booking{
+          .desc-booking{
             margin-top: 16px;
             margin-bottom: 0px;
             font-size: .9em;
             color: #464646;
             font-family: 'Open Sans', sans-serif;
           }
-          #desc-delivery{
+          .desc-delivery{
             margin: 0px;
             padding: 0px;
             font-size: .9em;
@@ -182,22 +182,22 @@
             font-family: 'Open Sans', sans-serif;
           }
          
-          #desc-cuisinetitle{
+          .desc-cuisinetitle{
             @extend %desc-title-style;
           }
-          #desc-cuisinedesc{
+          .desc-cuisinedesc{
             @extend %desc-desc-style
           }
-          #desc-phonetitle{
+          .desc-phonetitle{
             @extend %desc-title-style;
           }
-          #desc-phonedesc{
+          .desc-phonedesc{
             @extend %desc-desc-style
           }
-          #desc-openingtitle{
+          .desc-openingtitle{
             @extend %desc-title-style;
           }
-          #desc-openingdesc{
+          .desc-openingdesc{
             @extend %desc-desc-style
           }
           

@@ -8,7 +8,7 @@ body {
   padding: 0px;
 }
 
-.main-row .show-row .desc-col #desc-openingtitle, .main-row .show-row .desc-col #desc-phonetitle, .main-row .show-row .desc-col #desc-cuisinetitle {
+.main-row .show-row .desc-col .desc-openingtitle, .main-row .show-row .desc-col .desc-phonetitle, .main-row .show-row .desc-col .desc-cuisinetitle {
   margin-top: 18px;
   margin-bottom: 0px;
   font-size: 0.9em;
@@ -17,7 +17,7 @@ body {
   padding-top: 2px;
 }
 
-.main-row .show-row .desc-col #desc-openingdesc, .main-row .show-row .desc-col #desc-phonedesc, .main-row .show-row .desc-col #desc-cuisinedesc {
+.main-row .show-row .desc-col .desc-openingdesc, .main-row .show-row .desc-col .desc-phonedesc, .main-row .show-row .desc-col .desc-cuisinedesc {
   padding-top: 2px;
   color: #616161;
   font-family: "Open Sans", sans-serif;
@@ -133,25 +133,25 @@ header .others {
   flex: 1 1 25%;
   height: 400px;
 }
-.main-row .show-row .desc-col #desc-title {
+.main-row .show-row .desc-col .desc-title {
   margin-top: 20px;
   margin-bottom: 0px;
   font-family: "Open Sans", sans-serif;
 }
-.main-row .show-row .desc-col #desc-address {
+.main-row .show-row .desc-col .desc-address {
   margin: 0px;
   font-size: 0.8em;
   color: #525252;
   font-family: "Open Sans", sans-serif;
 }
-.main-row .show-row .desc-col #desc-booking {
+.main-row .show-row .desc-col .desc-booking {
   margin-top: 16px;
   margin-bottom: 0px;
   font-size: 0.9em;
   color: #464646;
   font-family: "Open Sans", sans-serif;
 }
-.main-row .show-row .desc-col #desc-delivery {
+.main-row .show-row .desc-col .desc-delivery {
   margin: 0px;
   padding: 0px;
   font-size: 0.9em;
