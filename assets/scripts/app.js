@@ -23,7 +23,7 @@ async function getCategories() {
           categories: { name, id },
         } = cat;
         let elmnt = `<div class="check-cats1">
-          <input class="check" id="${id}" onchange="isCheckedOrNot(this)" type="radio" data-id="${name}" name="cat"
+          <input class="check" id="${id}" onchange="isCheckedOrNot(this)" type="radio" data-id="${id}" name="cat"
           />
       <label for="cat">${name}</label>
           </div>`;
@@ -160,9 +160,36 @@ function showSelectedRest(event) {
 function isCheckedOrNot(ele) {
   // let is_checked_elememt =  document.querySelector('.is_checked')
   // is_checked_elememt.innerHTML = ele.checked;
-  let checkedName = event.target.getAttribute("data-id");
-  // console.log(checkedName);
-  showFilteredRests(checkedName);
+  let checkedId = event.target.getAttribute("data-id");
+  // console.log(checkedId);
+  showFilteredRests(checkedId);
+}
+
+async function showFilteredRests(category) {
+  let url = `https://developers.zomato.com/api/v2.1/search?category=${category}`;
+  fetch(url, {
+    headers: { "user-key": "6c11b6f8975b808590064388ed3f37a8" },
+  })
+    .then((response) => response.json())
+    .then((data) => {
+      let restaurantAll = data.restaurants;
+      
+      for (item of restaurantAll) {
+        const {
+          restaurant: { name, id, highlights },
+        } = item;
+        let elmts = `<div class="left-items">
+        <p id="${name}" data-id="${id}">${name}</p>
+        </div>`;
+        asideSec.innerHTML +=  elmts;
+
+        catsName = highlights;
+        
+      }
+
+      console.log(category);
+      
+    });
 }
 
 /* ------------------- Events and Listeners -----------------------*/
@@ -175,28 +202,4 @@ asideSec.addEventListener("click", showSelectedRest);
 
 
 
-async function showFilteredRests(category) {
-  let url = "https://developers.zomato.com/api/v2.1/search";
-  fetch(url, {
-    headers: { "user-key": "6c11b6f8975b808590064388ed3f37a8" },
-  })
-    .then((response) => response.json())
-    .then((data) => {
-      let restaurantAll = data.restaurants;
-      
-      for(let i=0;i<catsName.length;i++){
-        if(catsName[i] === category){
-          for (item of restaurantAll) {
-            const {
-              restaurant: { name, id, highlights },
-            } = item;
-            
-            lastId = id;
-          }
-          console.log(catsName[i]);
-          
-        }
-      }
-      
-    });
-}
+
