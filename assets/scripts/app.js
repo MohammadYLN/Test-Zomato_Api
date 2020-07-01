@@ -1,5 +1,5 @@
 const catList = document.querySelector(".cat-list");
-const asideSec = document.querySelector(".result");
+let asideSec = document.querySelector(".result");
 const showSection = document.querySelector(".show-row");
 const cuisineShow = document.querySelector(".col-cuisine");
 const descSection = document.querySelector(".desc-col");
@@ -9,6 +9,7 @@ const imageSection = document.querySelector(".img-div");
 let catsName = [];
 let catsChecked = [];
 let lastId;
+
 
 /* --------------------------------- show list of Categories ----------------------------- */
 async function getCategories() {
@@ -166,6 +167,8 @@ function isCheckedOrNot(ele) {
 }
 
 async function showFilteredRests(category) {
+  
+  
   let url = `https://developers.zomato.com/api/v2.1/search?category=${category}`;
   fetch(url, {
     headers: { "user-key": "6c11b6f8975b808590064388ed3f37a8" },
@@ -173,21 +176,23 @@ async function showFilteredRests(category) {
     .then((response) => response.json())
     .then((data) => {
       let restaurantAll = data.restaurants;
-      
+      let catElmnt = [];
+      let count = 0;
       for (item of restaurantAll) {
+        
         const {
           restaurant: { name, id, highlights },
         } = item;
-        let elmts = `<div class="left-items">
+        catElmnt[count] = `<div class="left-items">
         <p id="${name}" data-id="${id}">${name}</p>
         </div>`;
-        asideSec.innerHTML +=  elmts;
-
-        catsName = highlights;
+        count++;
+        // catsName = highlights;
+        // console.log(catElmnt);
         
       }
-
-      console.log(category);
+      asideSec.innerHTML =  catElmnt;
+      
       
     });
 }
